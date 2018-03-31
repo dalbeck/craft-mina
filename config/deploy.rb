@@ -11,13 +11,13 @@ when 'production'
  set :deploy_to, '/var/www/html'
  set :branch, 'master'
 end
-set :shared_paths, ['craft/config','craft/storage','/assets/images','/assets/videos']
+set :shared_paths, ['craft/config','craft/storage','public/assets/images','public/assets/videos']
 task :setup => :environment do
  # create shared folders
  queue! %[mkdir -p "#{deploy_to}/shared/craft/config"]
  queue! %[mkdir -p "#{deploy_to}/shared/craft/storage"]
- queue! %[mkdir -p "#{deploy_to}/shared/assets/images"]
- queue! %[mkdir -p "#{deploy_to}/shared/assets/videos"]
+ queue! %[mkdir -p "#{deploy_to}/shared/public/assets/images"]
+ queue! %[mkdir -p "#{deploy_to}/shared/public/assets/videos"]
 # change project directory user group to web
  queue! %[chgrp -R web "#{deploy_to}"]
  # set project directory user permissions
